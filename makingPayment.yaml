@@ -4,4 +4,50 @@ info:
   description: OpenAPI specification created for the service making a payment.
   version: 2025-10-24
 
+servers:
+  url: http://api.moviexample.com/v1
+  description: Manage the information to buy tickets in the movie website.
+
+paths:
+  get:
+    summary: Retrieve if the customer is registered and if so, retrieve his/her credit card information.
+    description: Returns the user based on the username and password provided.
+    parameters:
+      - name: username
+        in: query 
+        description: This is the username that the customer enters on the login app.
+        require: true
+        schema: string
+
+      - name: password
+        in: query
+        description: This is the password that the customer enters on the login app.
+        require: true
+        schema: string
+
+    responses:
+      '200':
+        description: The information of the registered customer.
+        content: 
+          application/json:
+            schema:
+              type: array
+              items:
+                type:object
+              properties:
+                id: 
+                  type: string
+                name:
+                  type: string
+                creditCard:
+                  type: string
+                expirationDate:
+                  type: string
+
+      '404':
+        description: We did not find a registered customer for the specified username and password.
+
+/payments:
+  post:
+    
 
