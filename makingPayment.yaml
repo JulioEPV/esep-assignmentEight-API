@@ -90,6 +90,29 @@ paths:
       '400':
         description: Payment failed.
 
+/payments/{paymentId}:
+
+  delete:
+    summary: Cancel an existing payment 
+    description: Delete a payment by its ID
+    parameters:
+      - name: paymentID
+        in: path
+        required: true
+        description: ID to cancel.
+        schema: 
+          type: string
+    
+    responses:
+      '200':
+        description: Payment succesfully canceled.
+      '404':
+        description: ID not found.
+      '401':
+        description: Your profile is not authorized to delete payments.
+
+
+
 
 
 
