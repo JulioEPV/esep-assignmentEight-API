@@ -39,7 +39,7 @@ paths:
                   type: string
                 name:
                   type: string
-                creditCard:
+                creditCardNumber:
                   type: string
                 expirationDate:
                   type: string
@@ -49,5 +49,49 @@ paths:
 
 /payments:
   post:
-    
+    summary: Create a payment for the registered customer.
+    description: Generates the payment for the selected movie by providing name, credit card number, and expiration date. Returns a succesful payment upon success.
+    requestBody:
+      require: true
+      content:
+        application/json:
+          schema:
+            type: object
+              required:
+                - name
+                - creditCardNumber
+                - expirationDate
+              properties:
+                name:
+                  type: string
+                  example: "Julio Pinzon"
+                
+                creditCardNumber:
+                  type: string
+                  example: "1234-5678-9101-1112"
+                
+                expirationDate:
+                  type: string
+                  example: "2027-12-22"
+    responses:
+      '201':
+        description: Payment done succesfully.
+          content:
+            application/json:
+              schema:
+                type:object
+                  properties:
+                    paymentID:
+                      type: string
+                    status:
+                      type: string
+                      example: "confirmed"
+      
+      '400':
+        description: Payment failed.
+
+
+
+
+
 
