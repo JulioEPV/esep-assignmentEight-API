@@ -1,0 +1,7 @@
+openapi: 3.0.4
+info:
+  title: Assignment 8 Sample API
+  description: OpenAPI specification created for the service making a payment.
+  version: 2025-10-24
+
+
